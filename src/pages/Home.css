@@ -1,0 +1,1080 @@
+/* 🎨 Modern Home Page Design - Premium & Refined */
+
+/* 1) 전체 배경 - Galaxy/Universe Theme */
+body {
+  background: var(--bg-gradient, linear-gradient(180deg, 
+    #F5E6FF 0%, 
+    #E8D5F2 25%,
+    #FDF9FF 50%,
+    #FAF0FF 75%,
+    #FDF9FF 100%));
+  background-attachment: fixed;
+  color: var(--text-dark);
+  font-family: "Cafe24SsurroundAir", "Pretendard", sans-serif;
+  transition: var(--transition-slow);
+  position: relative;
+}
+
+/* 2) Galaxy Texture & Stars */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(200, 168, 233, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(230, 184, 230, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(155, 126, 222, 0.15) 0%, transparent 60%),
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 90% 40%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 33% 60%, rgba(255, 255, 255, 0.6), transparent);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 200px 200px, 300px 300px, 150px 150px, 250px 250px, 180px 180px, 220px 220px;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+  animation: twinkle 8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200, 168, 233, 0.3) 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(230, 184, 230, 0.3) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(155, 126, 222, 0.1) 0%, transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 3) 섹션 기본 스타일 */
+.section,
+.hero,
+.highlight-section,
+.music-quote,
+.guestbook-preview {
+  margin: var(--space-3xl) auto;
+  width: min(1200px, 92%);
+  position: relative;
+  z-index: 1;
+}
+
+.section:first-of-type {
+  margin-top: var(--space-2xl);
+}
+
+/* 4) 섹션 제목 - 더 세련된 스타일 */
+.section-title {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: clamp(28px, 4vw, 36px);
+  color: var(--text-dark);
+  margin-bottom: var(--space-3xl);
+  position: relative;
+  display: inline-block;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.section-title::after {
+  display: none;
+}
+
+/* ============================================
+   HERO SECTION - 더 임팩트 있게
+   ============================================ */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4xl);
+  padding: var(--space-2xl) 0;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px); /* 헤더 높이 제외 */
+  max-height: calc(100vh - 120px);
+  width: min(1200px, 92%);
+  box-sizing: border-box;
+}
+
+.hero-left {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hero-profile-img {
+  width: clamp(240px, 28vw, 320px);
+  height: clamp(240px, 28vw, 320px);
+  border-radius: var(--radius-circle);
+  background: linear-gradient(135deg, var(--sky-light), var(--cotton-white));
+  border: 10px solid white;
+  box-shadow: 
+    0 30px 80px rgba(90, 168, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 60px rgba(255, 255, 255, 0.3);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition-slow);
+}
+
+.hero-profile-img:hover {
+  transform: scale(1.03) rotate(2deg);
+  box-shadow: 
+    0 40px 100px rgba(90, 168, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Floating Cloud Background */
+.hero-left::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: clamp(300px, 35vw, 380px);
+  height: clamp(300px, 35vw, 380px);
+  background: radial-gradient(circle, 
+    rgba(167, 211, 255, 0.25) 0%, 
+    rgba(255, 200, 220, 0.15) 50%,
+    transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(40px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero-left::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: -15px;
+  width: clamp(140px, 18vw, 180px);
+  height: clamp(140px, 18vw, 180px);
+  background: radial-gradient(circle, 
+    rgba(255, 180, 220, 0.2) 0%, 
+    transparent 60%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(30px);
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(10px);
+  }
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 600px;
+}
+
+.hero-label {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-xs);
+  color: var(--deep-sky);
+  margin: 0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin: 0;
+  background: linear-gradient(135deg, 
+    var(--deep-sky) 0%, 
+    var(--point-pink) 50%,
+    var(--deep-sky) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.hero-desc {
+  font-family: "Cafe24SsurroundAir", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: var(--text-gray);
+  opacity: 0.85;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-base);
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--galaxy-purple), var(--galaxy-lavender));
+  color: white;
+  box-shadow: var(--shadow-neu-embossed);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.btn.primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 32px rgba(155, 126, 222, 0.35),
+    0 6px 16px rgba(200, 168, 233, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(200, 168, 233, 0.4);
+  color: var(--galaxy-purple);
+  box-shadow: var(--shadow-neu-embossed);
+  z-index: 1;
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 10px 28px rgba(155, 126, 222, 0.25),
+    0 5px 14px rgba(200, 168, 233, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: var(--galaxy-lavender);
+}
+
+/* ============================================
+   HIGHLIGHT PROJECTS - 더 세련된 카드
+   ============================================ */
+
+.highlight-section {
+  padding: var(--space-4xl) 0;
+}
+
+.highlight-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-neu-embossed);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-slow);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  min-height: 180px;
+}
+
+.highlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--galaxy-pink), 
+    var(--galaxy-purple),
+    var(--galaxy-lavender),
+    var(--galaxy-pink));
+  background-size: 200% auto;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.highlight-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 50px rgba(155, 126, 222, 0.3),
+    0 10px 30px rgba(200, 168, 233, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.highlight-thumb {
+  width: 120px;
+  min-width: 120px;
+  height: 100%;
+  min-height: 180px;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  transition: transform 0.5s ease;
+  flex-shrink: 0;
+}
+
+.highlight-card:hover .highlight-thumb {
+  transform: scale(1.1);
+}
+
+.highlight-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+}
+
+.highlight-card > div:not(.highlight-thumb) {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+  justify-content: center;
+}
+
+.highlight-card h3 {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin: 0 0 var(--space-xs);
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.highlight-card p {
+  font-family: "Cafe24SsurroundAir", sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--text-gray);
+  margin: 0 0 var(--space-sm);
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.highlight-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: 0;
+}
+
+.tag {
+  background: rgba(255, 120, 180, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  color: #ff4fa7;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: -0.01em;
+  transition: var(--transition-base);
+  border: 1px solid rgba(255, 120, 180, 0.25);
+  white-space: nowrap;
+}
+
+.highlight-card:hover .tag {
+  background: linear-gradient(135deg, 
+    rgba(255, 120, 180, 0.2), 
+    rgba(255, 180, 220, 0.15));
+  transform: translateY(-2px);
+  border-color: rgba(255, 120, 180, 0.3);
+}
+
+.highlight-more {
+  text-align: right;
+  margin-top: var(--space-xl);
+}
+
+.highlight-more a {
+  font-size: var(--font-size-base);
+  color: var(--deep-sky);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: var(--transition-base);
+  font-family: "Cafe24Ssurround", sans-serif;
+}
+
+.highlight-more a:hover {
+  gap: var(--space-md);
+  color: var(--point-pink);
+}
+
+/* ============================================
+   MUSIC & QUOTE - 더 모던한 디자인
+   ============================================ */
+
+.music-quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.music-box,
+.quote-box {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-neu-embossed);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-slow);
+}
+
+.music-box::before,
+.quote-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--point-pink), 
+    var(--deep-sky));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.music-box:hover::before,
+.quote-box:hover::before {
+  opacity: 1;
+}
+
+.music-box:hover,
+.quote-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 20px 50px rgba(155, 126, 222, 0.25),
+    0 10px 30px rgba(200, 168, 233, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.music-box {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Music Player Header */
+.music-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.music-back-btn,
+.music-menu-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-dark);
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.music-back-btn:hover,
+.music-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
+.music-header-title {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+}
+
+/* Album Art / Visualizer */
+.music-visualizer {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: var(--space-xl);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    inset 0 0 40px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.music-cover-art {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.music-cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--point-pink), var(--deep-sky));
+  opacity: 0.8;
+}
+
+/* Song Info */
+.music-song-info {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.music-song-title {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 var(--space-xs);
+  letter-spacing: -0.02em;
+}
+
+.music-song-artist {
+  font-family: "Cafe24SsurroundAir", sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--text-gray);
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Progress Bar */
+.music-progress-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.music-progress-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.music-progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--point-pink), var(--deep-sky));
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-base);
+}
+
+.music-progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(255, 124, 200, 0.4);
+}
+
+.music-progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--point-pink), var(--deep-sky));
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.music-time {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-xs);
+  color: var(--text-gray);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Playback Controls */
+.music-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.music-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text-dark);
+  transition: var(--transition-base);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.music-control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.music-play-pause {
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+  background: linear-gradient(135deg, var(--point-pink), var(--deep-sky));
+  color: white;
+  box-shadow: 
+    0 8px 24px rgba(255, 124, 200, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.music-play-pause:hover {
+  box-shadow: 
+    0 12px 32px rgba(255, 124, 200, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.music-iframe-hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box-title {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-xs);
+  color: var(--deep-sky);
+  margin: 0 0 var(--space-xl);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.quote-box {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1), 
+    rgba(245, 251, 255, 0.8));
+  position: relative;
+}
+
+.quote-box::after {
+  content: "☁️";
+  position: absolute;
+  top: var(--space-xl);
+  right: var(--space-xl);
+  font-size: 64px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.quote-text {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin: auto 0;
+  text-align: center;
+  word-break: keep-all;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+/* ============================================
+   GUESTBOOK PREVIEW - 더 세련되게
+   ============================================ */
+
+.guestbook-preview {
+  text-align: center;
+  padding: var(--space-4xl) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guestbook-preview h2 {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: clamp(28px, 4vw, 36px);
+  color: var(--text-dark);
+  margin-bottom: var(--space-3xl);
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.guestbook-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl) var(--space-4xl);
+  box-shadow: var(--shadow-neu-embossed);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+  width: 100%;
+}
+
+.guestbook-box::after {
+  display: none;
+}
+
+.guestbook-box p {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+  border: none;
+  font-family: "Cafe24SsurroundAir", sans-serif;
+  line-height: 1.8;
+  max-width: 100%;
+  text-align: left;
+  width: 100%;
+}
+
+.guestbook-box p::before {
+  content: "최근 메시지: ";
+  font-weight: 600;
+  color: var(--text-gray);
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.guestbook-link {
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-size: var(--font-size-base);
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--galaxy-purple), var(--galaxy-lavender));
+  padding: var(--space-md) var(--space-3xl);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-neu-embossed);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: var(--transition-base);
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.guestbook-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 32px rgba(155, 126, 222, 0.35),
+    0 6px 16px rgba(200, 168, 233, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .highlight-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3xl);
+    padding: var(--space-4xl) 0;
+    min-height: auto;
+  }
+
+  .hero-right {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero-profile-img {
+    width: clamp(200px, 40vw, 260px);
+    height: clamp(200px, 40vw, 260px);
+    border: 8px solid white;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .highlight-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .music-quote {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .section,
+  .hero,
+  .highlight-section,
+  .music-quote,
+  .guestbook-preview {
+    margin: var(--space-4xl) auto;
+    width: min(100%, 92%);
+  }
+}
+
+/* ============================================
+   DARK MODE - Home Page Specific
+   ============================================ */
+
+:root[data-theme="dark"] .highlight-card {
+  background: rgba(25, 28, 38, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .highlight-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="dark"] .highlight-card::before {
+  background: linear-gradient(90deg, 
+    var(--point-pink), 
+    var(--deep-sky),
+    var(--point-pink));
+}
+
+:root[data-theme="dark"] .music-box,
+:root[data-theme="dark"] .quote-box {
+  background: rgba(25, 28, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .music-box {
+  background: linear-gradient(135deg, 
+    rgba(20, 25, 35, 0.9), 
+    rgba(25, 28, 38, 0.95));
+}
+
+:root[data-theme="dark"] .quote-box {
+  background: linear-gradient(135deg, 
+    rgba(25, 28, 38, 0.95), 
+    rgba(20, 25, 35, 0.9));
+}
+
+/* Dark Mode - Music Player */
+:root[data-theme="dark"] .music-box {
+  background: rgba(25, 28, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .music-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .music-back-btn,
+:root[data-theme="dark"] .music-menu-btn {
+  background: rgba(20, 23, 32, 0.8);
+  color: var(--text-main);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .music-back-btn:hover,
+:root[data-theme="dark"] .music-menu-btn:hover {
+  background: rgba(30, 33, 42, 0.9);
+}
+
+:root[data-theme="dark"] .music-visualizer {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .music-control-btn {
+  background: rgba(20, 23, 32, 0.8);
+  color: var(--text-main);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .music-control-btn:hover {
+  background: rgba(30, 33, 42, 0.9);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme="dark"] .music-progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .music-progress-bar::-webkit-slider-thumb {
+  box-shadow: 0 2px 8px rgba(255, 157, 212, 0.4);
+}
+
+:root[data-theme="dark"] .guestbook-box {
+  background: linear-gradient(135deg, 
+    rgba(20, 25, 35, 0.8), 
+    rgba(25, 28, 38, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .guestbook-box p {
+  background: rgba(25, 28, 38, 0.9);
+  border: 2px solid rgba(255, 157, 212, 0.2);
+  color: var(--text-main);
+}
+
+:root[data-theme="dark"] .hero-profile-img {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .hero-left::before,
+:root[data-theme="dark"] .hero-left::after {
+  opacity: 0.3;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}

@@ -1,0 +1,40 @@
+/* Reset and base styles are handled in styles.css */
+
+/* ============================================
+   🎨 Cafe24 Font Global Override (Absolute Priority)
+   ============================================ */
+
+/* 1. Import Fonts directly from CDN */
+@import url('https://cdn.jsdelivr.net/gh/webfontworld/cafe24/Cafe24SsurroundAir.css');
+@import url('https://cdn.jsdelivr.net/gh/webfontworld/cafe24/Cafe24Ssurround.css');
+
+:root {
+    /* Define font variables */
+    --font-main: 'Cafe24SsurroundAir', 'Cafe24Ssurround', sans-serif;
+    --font-title: 'Cafe24Ssurround', sans-serif;
+}
+
+/* 2. Force apply to EVERYTHING using * selector */
+* {
+    font-family: var(--font-main) !important;
+}
+
+/* 3. Override for titles/bold elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+.hero-title,
+.section-title,
+button,
+.btn,
+.highlight-card h3,
+.music-title-mini,
+.guestbook-preview h2,
+.guestbook-link {
+    font-family: var(--font-title) !important;
+}

@@ -1,0 +1,291 @@
+export interface Project {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  category: string;
+  year: string;
+  role: string;
+  stack: string[];
+  tags: string[];
+  thumbnail?: string;
+  demo?: string;
+  repo?: string;
+  summary?: string;
+  thumbnailColor?: string;
+  features?: string[];
+  highlights?: string[];
+  images?: string[];
+}
+
+export const projects: Project[] = [
+  {
+    id: "fender-korea",
+    title: "Fender Korea Launch Site",
+    subtitle: "R3F 3D Interaction Web Project",
+    description:
+      "조선펑크 정서와 Fender 헤리티지를 결합한 프리미엄 기타 브랜드 런칭 프로모션 웹사이트. React Three Fiber 기반 3D WebGL 렌더링과 GSAP ScrollTrigger를 활용한 시네마틱 스크롤 경험을 제공합니다.",
+    summary:
+      "Fender Korea의 런칭을 위해 제작한 몰입형 3D 웹 경험. Crying Nut 공연 영상을 Premiere Pro로 직접 편집하여 조선펑크의 현장감을 담은 인트로부터, 사용자의 스크롤에 반응하는 유려한 3D 기타 모델 탐험, 제품의 디자인·톤·퍼포먼스를 시각화한 멀티 섹션까지 - 브랜드 스토리를 인터랙티브하게 전달합니다.",
+    category: "Web · Branding · 3D",
+    year: "2025",
+    role: "UX/UI · Front-End · 3D Design · Video Editing",
+    stack: ["React 18", "TypeScript", "React Three Fiber", "Three.js", "GSAP", "@react-three/drei", "Vite", "Tailwind CSS"],
+    tags: ["3D", "WebGL", "Scroll Animation", "Premium", "Music"],
+    thumbnailColor: "linear-gradient(135deg, #cc0000, #87ceeb)",
+    images: [
+      "/images/projects/fender-1.png",
+      "/images/projects/fender-2.png",
+      "/images/projects/fender-3.png",
+      "/images/projects/fender-4.png",
+      "/images/projects/fender-5.png",
+      "/images/projects/fender-6.png",
+      "/images/projects/fender-7.png",
+      "/images/projects/fender-8.png",
+      "/images/projects/fender-9.png",
+    ],
+    features: [
+      "4개 씬 구성: 공연 영상 인트로 → 3D 룸 탐험 → 멀티 섹션 제품 소개 → 아웃트로",
+      "React Three Fiber (R3F) 기반 실시간 3D 렌더링 및 인터랙션",
+      "GSAP ScrollTrigger를 활용한 스크롤 동기화 애니메이션 (800+ 라인)",
+      "GLB 3D 모델 최적화 및 Git LFS를 통한 버전 관리",
+      "커스텀 비주얼 이펙트: TextFX Headline, Light Pulse, Shine Scroll",
+      "브랜드 아이덴티티 반영 커스텀 커서 인터랙션",
+      "Lazy Loading 및 Progressive Loading으로 초기 로딩 시간 최적화",
+      "반응형 3D 뷰포트 및 터치 이벤트 지원 (Mobile-First)",
+      "성능 최적화: requestAnimationFrame 기반 부드러운 60fps 렌더링"
+    ],
+    highlights: [
+      "Premiere Pro 영상 편집: 크라잉넛 공연 영상을 조선펑크 무드로 재해석 (컷·조명·노이즈 조정)",
+      "3D 아키텍처: Scene1(인트로) → Scene2(룸) → Scene3(6개 섹션) → Scene4(아웃트로)",
+      "GSAP + R3F 통합: 스크롤 진행도에 따라 카메라 위치 및 3D 오브젝트 속성 동기화",
+      "Git LFS 활용: guitar3.glb, room.glb 등 대용량 3D 모델 파일 효율적 관리",
+      "TypeScript 엄격 모드: 모든 Props 및 3D 타입 정의로 런타임 에러 방지"
+    ],
+    demo: "https://jjw0144.mycafe24.com/fender/",
+    repo: "https://github.com/ziziziwon/fender-r3f-project",
+  },
+  {
+    id: "f1-community",
+    title: "F1 Community - Apex Charge",
+    subtitle: "Speed-inspired UI/UX with Team Color Identity System",
+    description: "2025 시즌 F1 데이터 기반 팬 커뮤니티 플랫폼. 10개 팀의 브랜드 컬러로 UI가 동적으로 변경되며, GSAP 모션과 Zustand 상태관리로 F1의 속도감을 웹에서 구현. RESTful API 설계 및 Ergast API 호환 데이터 모델로 실제 백엔드 연동 준비 완료.",
+    summary:
+      "Mercedes부터 Kick Sauber까지 10개 팀의 브랜드 아이덴티티를 코드로 구현한 F1 커뮤니티. 팀 선택 시 버튼·카드·하이라이트가 팀 컬러로 자동 변경되며, GSAP ScrollTrigger로 F1 특유의 스피드를 표현. 21명 드라이버 프로필(AVIF/WebP 최적화), 레이스 일정/결과 API, 포럼, 갤러리, JWT 인증까지 - 실전 풀스택 구조.",
+    category: "Web App · Community · Sports",
+    year: "2025",
+    role: "Product Design · Full-Stack · API Design",
+    stack: ["React 18", "TypeScript", "GSAP", "Zustand", "Vite", "Ergast API", "JWT"],
+    tags: ["API", "Sports", "Dashboard", "Motion", "Real-time"],
+    thumbnailColor: "linear-gradient(135deg, #000080, #ffd700)",
+    images: [
+      "/images/projects/f1-1.png",
+      "/images/projects/f1-2.png",
+      "/images/projects/f1-3.png",
+      "/images/projects/f1-4.png",
+      "/images/projects/f1-5.png",
+      "/images/projects/f1-6.png",
+      "/images/projects/f1-7.png",
+      "/images/projects/f1-8.png",
+      "/images/projects/f1-9.png",
+      "/images/projects/f1-10.png",
+      "/images/projects/f1-11.png",
+      "/images/projects/f1-12.png",
+    ],
+        features: [
+          "🎨 팀 컬러 아이덴티티: 10개 팀(Mercedes, Red Bull, Ferrari 등) 브랜드 컬러로 UI 자동 변경",
+          "🚀 GSAP 스크롤 애니메이션: F1 특유의 속도감을 스크롤 기반 모션으로 구현 (텍스트·로고·이미지 등장)",
+          "👥 2025 시즌 드라이버: 21명 현역 드라이버 프로필 (AVIF/WebP 최적화, Lazy Loading)",
+          "🏁 10개 팀 정보: Mercedes, Red Bull, Ferrari, McLaren, Aston Martin, Alpine, Williams, RB, Haas, Kick Sauber",
+          "🔌 RESTful API 구조: 인증(/api/auth), 레이스(/api/races), 커뮤니티(/api/forum), 미디어(/api/media)",
+          "🧩 Zustand 상태관리: selectedTeam, selectedDriver, highlightMode 등 전역 제어 (Redux 대비 가볍고 빠름)",
+          "🔐 JWT 토큰 인증: ADMIN_EMAILS 기반 Admin/User 역할 자동 구분",
+          "💬 커뮤니티 포럼: 전략·드라이버·자유 카테고리 분류 및 CRUD (Thread, Post 관리)",
+          "🖼️ 갤러리: Blob URL 처리 및 메타데이터 관리 (작성자, 날짜, 캡션)",
+          "📱 오프라인 지원: localStorage persist로 네트워크 없이도 동작",
+          "⚡ TypeScript 타입 안정성: Race, Result, Thread, Post 등 모든 API 응답 타입 정의",
+          "🌐 API 확장성: 환경변수 기반 설정, Mock 데이터 → 실제 API 쉬운 전환, Ergast API 호환"
+        ],
+        highlights: [
+          "디자인 철학: Speed(빠른 반응) · Identity(팀 컬러 유지) · Precision(데이터 정확성) · Minimal(집중도 높은 구성)",
+          "확장성: Mock 데이터 구조를 실제 API로 쉽게 교체 가능 (VITE_API_BASE 환경변수 기반)",
+          "Ergast API 호환: F1 공식 API와 동일한 데이터 모델로 실제 연동 시 마이그레이션 용이",
+          "성능 최적화: Zustand Selector로 불필요한 렌더 최소화, GSAP과 Zustand 충돌 없음",
+          "Admin-ready 아키텍처: 이메일 기반 역할 구분, JWT 인증, 포스트/미디어/레이스 데이터 관리 (Firebase/Supabase 연결 준비)",
+          "2025 시즌 팀 & 드라이버: George Russell, Max Verstappen, Charles Leclerc, Lewis Hamilton 등 21명 드라이버 정보 포함"
+        ],
+    demo: "https://jjw0144.mycafe24.com/apex/",
+    repo: "https://github.com/ziziziwon/f1-community",
+  },
+  {
+    id: "geukdan-adventure",
+    title: "🐯🐙 극단이의 우당탕 모험",
+    subtitle: "Tiger Octo's Interactive Pixel Adventure",
+    description: "호랑이 문어 캐릭터 '극단이'가 밴드 '극동아시아 타이거즈'를 만나러 가는 픽셀 감성 웹 모험. 게임이 아닌 '경험 중심 작품'으로, 스토리–미니게임–수집–보상–갤러리가 유기적으로 연결되어 사용자가 극단이의 감정·기억·여정을 함께 체험하도록 설계.",
+    summary:
+      "단순 게임이 아닌 인터랙티브 스토리 경험. Framer Motion으로 구현한 부드러운 장면 전환, Canvas API 기반 픽셀 아트 미니게임(별 잡기·빗방울 기억·아이템 캐치), Zustand로 관리되는 추억 수집 시스템, 보상 모달과 갤러리까지 - 극단이의 세계관을 웹에서 플레이 가능한 하나의 작은 모험으로 완성.",
+    category: "Interactive · Pixel · Game · Story",
+    year: "2025",
+    role: "UX/UI · Front-End · Game Design · Character Design",
+    stack: ["React 18", "TypeScript", "Framer Motion", "Zustand", "Tailwind CSS", "Canvas API", "Web Audio API"],
+    tags: ["Pixel Art", "Story", "Animation", "Web Game", "Character"],
+    thumbnailColor: "linear-gradient(135deg, #ffb6d8, #a7d3ff)",
+    images: [
+      "/images/projects/geukdan-1.png",
+      "/images/projects/geukdan-2.png",
+      "/images/projects/geukdan-3.png",
+      "/images/projects/geukdan-4.png",
+      "/images/projects/geukdan-5.png",
+      "/images/projects/geukdan-6.png",
+      "/images/projects/geukdan-7.png",
+      "/images/projects/geukdan-8.png",
+      "/images/projects/geukdan-9.png",
+      "/images/projects/geukdan-10.png",
+      "/images/projects/geukdan-11.png",
+      "/images/projects/geukdan-12.png",
+    ],
+    features: [
+      "3개 미니게임: 별 잡기(마우스 추적), 빗방울 기억(메모리 게임), 아이템 캐치(타이밍 게임)",
+      "비주얼 이펙트: 라이트 블룸, 패럴랙스 배경, 빗방울 & 반짝임 파티클 (Canvas API)",
+      "스토리 시스템: 다양한 장면 전환, 감정 로그 기록, 추억 수집 메커니즘",
+      "인터랙티브 초대장: 사용자 클릭에 반응하는 인터랙티브 카드 시스템",
+      "갤러리 & 컬렉션: 수집 가능한 아이템, 비하인드 씬 콘텐츠, 업적 보상 모달",
+      "SceneLoader: 동적 장면 전환 관리자로 씬 간 부드러운 이동",
+      "ProgressBar: 시각적 진행 상황 추적 UI",
+      "RewardModal: 업적 및 보상 알림 시스템",
+      "Zustand persist: 진행 상황 자동 저장 및 복원"
+    ],
+    highlights: [
+      "디자인 철학: 픽셀 아트 미학 + 스무스 모션 + 캐릭터 중심 경험",
+      "아키텍처: MemoryStage(메인), InviteScene(초대장), SceneLoader(전환 관리)",
+      "상태관리: Zustand로 메모리, 장면, 수집 아이템 상태 전역 관리",
+      "스토리텔링: 사용자 주도 내러티브 경험 (선택지 없이도 몰입 유도)",
+      "성능: Framer Motion + Canvas 최적화로 60fps 유지"
+    ],
+    demo: "https://jjw0144.mycafe24.com/game/",
+    repo: "https://github.com/ziziziwon/Tiger-Octo-s-ADVENTURE",
+  },
+  {
+    id: "dream-candy-lab",
+    title: "💕 Dream Candy Lab",
+    subtitle: "말랑말랑 젤리 실험실 - 브랜드 IP + 3D 풀스택 E-Commerce",
+    description: "하리보의 감성 + 쿠키런의 귀여움을 벤치마킹한 젤리 연구소 컨셉의 풀스택 쇼핑몰. 7개 씬 스토리텔링 랜딩, 3D 젤리 모델(R3F), Firebase 인증, 나만의 젤리 만들기, 콘테스트 투표, 장바구니·결제·주문 관리까지 - 브랜드 리브랜딩부터 실전 E-Commerce 기능까지 모두 구현한 인터랙션 중심 프로젝트.",
+    summary:
+      "'젤리가 실험을 진행하는 연구소'라는 독창적인 세계관을 웹으로 구현. GSAP ScrollTrigger로 7개 씬이 영화처럼 전환되는 랜딩페이지, React Three Fiber 3D 젤리 모델, 사용자가 색상·속성을 선택해 나만의 젤리를 만들고 콘테스트에 투표하는 인터랙티브 Lab, 장바구니·결제(무신사/쿠팡 UX)·주문 내역까지 - 감성과 실용을 모두 잡은 풀스택 작품.",
+    category: "E-Commerce · Branding · Full-Stack",
+    year: "2025",
+    role: "UX/UI Design · Full-Stack · Branding · 3D Design",
+    stack: ["React 18", "TypeScript", "Firebase Auth", "Firestore", "Framer Motion", "React Three Fiber", "GSAP", "Zustand", "Tailwind CSS", "React Confetti"],
+    tags: ["E-Commerce", "Pastel", "Cute", "Branding", "3D", "Firebase"],
+    thumbnailColor: "linear-gradient(135deg, #ffd1e8, #fff5ba)",
+    images: [
+      "/images/projects/candy-1.png",
+      "/images/projects/candy-2.png",
+      "/images/projects/candy-3.png",
+      "/images/projects/candy-4.png",
+      "/images/projects/candy-5.png",
+      "/images/projects/candy-6.png",
+      "/images/projects/candy-7.png",
+      "/images/projects/candy-8.png",
+      "/images/projects/candy-9.png",
+      "/images/projects/candy-10.png",
+      "/images/projects/candy-11.png",
+    ],
+        features: [
+          "🫧 7개 씬 스토리텔링: BootSequence → GlitchParticle Hero → Product → Lab → Contest → About → Footer (GSAP ScrollTrigger)",
+          "🌈 3D 젤리 모델: React Three Fiber + @react-three/drei로 WebGL 렌더링 및 인터랙션",
+          "🔐 Firebase 인증: 이메일/비밀번호 로그인/회원가입, AuthContext 전역 상태, Admin/User 역할 기반 접근 제어",
+          "🧪 나만의 젤리 만들기: 실시간 색상/속성 미리보기, Firestore에 저장 및 실시간 데이터베이스 연동",
+          "🗳️ 젤리 콘테스트 & 투표: 투표 시스템, 실시간 집계, Top 3 순위 표시",
+          "🛍️ 풀스택 E-Commerce: Zustand 장바구니, 수량 선택, 3만원 이상 무료배송, 무신사/쿠팡 스타일 결제 페이지",
+          "👤 마이페이지: 사용자 프로필, 결제 내역 조회/관리, 내가 만든 젤리 관리/삭제, 콘테스트 참여 내역",
+          "🔧 관리자 기능: 젤리 삭제 권한, 실시간 통계 모니터링, 사용자 관리, Firestore 데이터 관리",
+          "🎉 결제 완료 Confetti: React Confetti로 파티클 애니메이션",
+          "🎨 커스텀 UI 라이브러리: Button, Card, Chip 등 젤리 테마 컴포넌트",
+          "💫 주요 애니메이션: 부유(Float), 바운스(Bounce), 버블, 반짝임(Sparkle) - GSAP + Framer Motion",
+          "🍭 캐릭터 시스템: Dr. Jellybear(연구소장), Strawbi(어시스턴트), Lemmi(엔지니어), Minty(디자이너)"
+        ],
+        highlights: [
+          "브랜딩: 크림 화이트 + 파스텔(코랄·옐로·민트·라벤더), 둥글고 휘어지는 32px+ 라운드 엣지",
+          "캐릭터: Dr. Jellybear(연구소장), Strawbi(어시스턴트), Lemmi(엔지니어), Minty(디자이너)",
+          "애니메이션: 부유(Float), 바운스(Bounce), 버블, 반짝임(Sparkle) - GSAP + Framer Motion",
+          "데이터 구조: users/, jellies/, votes/, orders/ (Firestore 컬렉션)",
+          "성능: GSAP·Framer Motion·R3F·Firebase 복합 구조에서 상태관리·씬 전환·성능 최적화",
+          "컬러 시스템: Jelly Yellow(#FFD100), Jelly Pink(#FF6F91), Jelly Mint(#BFFFC8), Jelly Lavender(#D0C3FF)",
+          "주문 관리: Firebase에 주문 정보 저장, 주문 번호 생성, 배송 정보 관리"
+        ],
+    demo: "https://jjw0144.mycafe24.com/haribo/",
+    repo: "https://github.com/ziziziwon/dream-candy-lab",
+  },
+      {
+        id: "ticketing-service",
+        title: "노션 티켓팅 서비스",
+        subtitle: "실전 UX 티켓팅 플로우 - 좌석 선택부터 결제까지",
+        description: "인터파크/멜론티켓 UX를 벤치마킹한 실전 수준의 티켓팅 프로토타입. 팝업 인증창, 실시간 좌석 선택 UI, 공연 검색, 예매 플로우(선택→인증→결제), Firebase 실시간 데이터베이스 연동까지 구현. 실제 서비스 론칭 수준의 사용자 경험 설계.",
+        summary:
+          "실제 티켓팅 서비스의 핵심 UX를 프로토타입으로 구현. 사용자가 공연을 검색하고, 좌석을 선택하며, 인증 절차를 거쳐 최종 결제까지 진행하는 전체 플로우를 Firebase 실시간 DB와 연동. 좌석 상태(선택 가능·선택됨·예약됨)가 실시간으로 업데이트되며, 반응형 디자인으로 모바일 환경도 지원.",
+        category: "Interactive · Product · UX",
+        year: "2024-2025",
+        role: "UX/UI · Front-End · Product Design",
+        stack: ["React 18", "TypeScript", "Firebase Realtime DB", "React Router", "Tailwind CSS"],
+        tags: ["Ticketing", "Interactive", "React", "UX Flow", "Real-time"],
+        thumbnailColor: "linear-gradient(135deg, #a8c0ff, #ff9a9e)",
+        features: [
+          "좌석 선택 UI: 실시간 상태 업데이트 (선택 가능·선택됨·예약됨), Firebase Realtime DB 연동",
+          "팝업 인증창: 실제 티켓팅 서비스처럼 팝업으로 본인 인증 절차 구현",
+          "공연 검색 및 필터링: 장르·날짜·장소 기준으로 공연 탐색",
+          "예매 플로우: 공연 선택 → 좌석 선택 → 인증 → 결제 확인 (4단계)",
+          "Firebase 실시간 DB: 좌석 상태, 예매 정보 실시간 동기화",
+          "반응형 디자인: Mobile-First 접근으로 스마트폰 티켓팅 최적화",
+          "UX 참고: 인터파크·멜론티켓의 사용자 행동 패턴 분석 및 적용"
+        ],
+        demo: "#",
+        repo: "#",
+      },
+      {
+        id: "mui-portfolio-dashboard",
+        title: "MUI Portfolio Dashboard",
+        subtitle: "React + Material-UI 기반 현대적인 대시보드 애플리케이션",
+        description: "React와 Material-UI로 구축된 현대적인 대시보드 애플리케이션. 재사용 가능한 UI 컴포넌트, 테마 시스템, 반응형 레이아웃을 제공합니다. Chart.js를 활용한 데이터 시각화, 다크 모드 지원, MUI와 Tailwind CSS의 조화로운 통합이 특징입니다.",
+        summary:
+          "Material-UI와 Tailwind CSS를 결합한 프리미엄 대시보드 솔루션. KPI 카드, 차트(Line Area, Donut, Bar), 테이블, 캘린더 등 다양한 컴포넌트로 구성된 종합 대시보드. 다크 모드 전환, 반응형 디자인, 재사용 가능한 컴포넌트 아키텍처로 확장성과 유지보수성을 고려한 프로젝트.",
+        category: "Dashboard · UI/UX · Admin",
+        year: "2025",
+        role: "Front-End · UI/UX Design · Component Architecture",
+        stack: ["React 18", "TypeScript", "Material-UI (MUI) 7.3.2", "Tailwind CSS", "Chart.js", "React Router DOM"],
+        tags: ["Dashboard", "MUI", "Chart", "Dark Mode", "Responsive"],
+        images: [
+          "/images/projects/mui-1.png",
+          "/images/projects/mui-2.png",
+          "/images/projects/mui-3.png",
+          "/images/projects/mui-4.png",
+          "/images/projects/mui-5.png",
+          "/images/projects/mui-6.png",
+          "/images/projects/mui-7.png",
+          "/images/projects/mui-8.png",
+        ],
+        thumbnailColor: "linear-gradient(135deg, #6366f1, #10b981)",
+        features: [
+          "다크 모드 지원: 라이트/다크 모드 전환 기능, 로컬 스토리지 저장",
+          "대시보드: KPI 카드, 차트(Line Area, Donut, Bar), 테이블로 구성된 종합 대시보드",
+          "애널리틱스: 고객 목록 및 성과 분석 페이지, 성과 지표(만족도, 유지율)",
+          "캘린더: 월/주/일/년 단위 뷰를 지원하는 캘린더, 이벤트 태그 표시",
+          "반응형 디자인: 모바일, 태블릿, 데스크톱 최적화",
+          "재사용 가능한 컴포넌트: 차트, 레이아웃, 섹션 컴포넌트",
+          "MUI + Tailwind 통합: 두 스타일 시스템의 조화로운 통합",
+          "Chart.js 통합: LineArea, Donut, Bars 차트 컴포넌트",
+          "테마 시스템: MUI Theme과 Tailwind CSS 변수 동기화",
+          "커스텀 스타일: CSS 변수를 사용한 테마 동기화, 유틸리티 클래스 제공"
+        ],
+        highlights: [
+          "아키텍처: charts/, components/, layout/, pages/, sections/ 구조로 관심사 분리",
+          "차트 시스템: Chart.js 등록 및 재사용 가능한 차트 컴포넌트 라이브러리",
+          "테마 시스템: Primary(Indigo), Secondary(Emerald) 색상 팔레트, 다크 모드 자동 적용",
+          "레이아웃: MainLayout + Sidebar 구조, React Router Outlet 활용",
+          "성능: Create React App 기반, npm-run-all로 동시 실행 최적화",
+          "배포: 서브 경로(/mui) 배포 지원, 프로덕션 빌드 최적화"
+        ],
+        demo: "https://jjw0144.mycafe24.com/mui/",
+        repo: "https://github.com/ziziziwon/mui-ui-system.git",
+      },
+    ];
