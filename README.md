@@ -59,11 +59,11 @@ my-portfolio/
 
 ## 🌐 배포
 
-이 프로젝트는 `/my-portfolio/` 서브 경로에서 배포되도록 설정되어 있습니다.
+이 프로젝트는 `/myportfolio/` 서브 경로에서 배포되도록 설정되어 있습니다.
 
-- `vite.config.ts`에서 `base: '/my-portfolio/'` 설정
-- `package.json`에서 `homepage: "/my-portfolio"` 설정
-- `main.tsx`에서 `BrowserRouter basename="/my-portfolio"` 설정
+- `vite.config.ts`에서 `base: '/myportfolio/'` 설정
+- `package.json`에서 `homepage: "/myportfolio"` 설정
+- `main.tsx`에서 `BrowserRouter basename="/myportfolio"` 설정
 
 ## 📄 라이선스
 
