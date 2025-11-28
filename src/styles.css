@@ -9,6 +9,72 @@
 /* Cafe24 Ssurround 폰트 */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap");
 
+/* ============================================
+   ⭐ 커스텀 커서 - 파란색 별 모양
+   ============================================ */
+* {
+  cursor: none !important;
+}
+
+/* 커스텀 커서 별 요소 */
+.custom-cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233b82f6' d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 4px rgba(83, 149, 255, 0.8));
+  animation: star-twinkle 1.5s ease-in-out infinite;
+}
+
+/* 호버 시 커서 확대 */
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(2);
+  transition: transform 0.15s ease-out;
+}
+
+.custom-cursor.hover::before {
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 1));
+}
+
+/* 클릭 시 커서 효과 */
+.custom-cursor.click {
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: transform 0.1s ease-out;
+}
+
+/* 별 반짝임 애니메이션 */
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* 링크, 버튼 등에 호버 효과 */
+a,
+button,
+.btn,
+.hero-btn,
+.jelly-btn,
+input[type="button"],
+input[type="submit"],
+[role="button"],
+.swiper-button-next,
+.swiper-button-prev {
+  cursor: none !important;
+}
+
 @font-face {
   font-family: "Cafe24Ssurround";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff") format("woff");
@@ -483,6 +549,24 @@ button,
 
 :root[data-theme="dark"] .guestbook-messages::-webkit-scrollbar-thumb:hover {
   background: rgba(200, 168, 233, 0.5);
+}
+
+:root[data-theme="dark"] .guestbook-delete-btn {
+  opacity: 0.5;
+}
+
+:root[data-theme="dark"] .guestbook-dots span {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="dark"] .guestbook-delete-btn:hover {
+  opacity: 1;
+  background: rgba(200, 168, 233, 0.2);
+}
+
+:root[data-theme="dark"] .guestbook-delete-btn:hover .guestbook-dots span {
+  background-color: var(--galaxy-lavender);
+  box-shadow: 0 0 8px rgba(200, 168, 233, 0.5);
 }
 
 :root[data-theme="dark"] .project-card,
@@ -2070,8 +2154,17 @@ a {
 .guestbook-bubble-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-sm);
   margin-bottom: var(--space-xs);
+}
+
+.guestbook-bubble-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  min-width: 0;
 }
 
 .guestbook-name {
@@ -2087,6 +2180,98 @@ a {
   color: var(--text-gray);
   opacity: 0.7;
   font-family: "Cafe24SsurroundAir", "Pretendard", sans-serif;
+}
+
+.guestbook-delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  position: relative;
+}
+
+.guestbook-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.guestbook-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-gray);
+  display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.guestbook-dots span:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.guestbook-dots span:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.guestbook-dots span:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.guestbook-delete-btn:hover {
+  opacity: 1;
+  background: rgba(155, 126, 222, 0.15);
+  transform: scale(1.05);
+}
+
+.guestbook-delete-btn:hover .guestbook-dots span {
+  background-color: var(--galaxy-purple);
+  transform: scale(1.2);
+  box-shadow: 0 0 6px rgba(155, 126, 222, 0.4);
+}
+
+.guestbook-delete-btn:hover .guestbook-dots span:nth-child(1) {
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+.guestbook-delete-btn:hover .guestbook-dots span:nth-child(2) {
+  animation: dotPulse 1.2s ease-in-out 0.2s infinite;
+}
+
+.guestbook-delete-btn:hover .guestbook-dots span:nth-child(3) {
+  animation: dotPulse 1.2s ease-in-out 0.4s infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+}
+
+.guestbook-delete-btn:active {
+  transform: scale(0.9);
+  background: rgba(155, 126, 222, 0.25);
+}
+
+.guestbook-delete-btn:active .guestbook-dots span {
+  transform: scale(0.9);
 }
 
 .guestbook-text {

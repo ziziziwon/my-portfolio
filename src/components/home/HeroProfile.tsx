@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const HeroProfile: React.FC = () => {
   // 프로필 이미지 경로 - public/images/profile/ 폴더에 저장
-  const defaultProfileImage = `${import.meta.env.BASE_URL}images/profile/profile.png`;
-  const [profileImage, setProfileImage] = useState<string>(defaultProfileImage);
-
-  useEffect(() => {
-    // localStorage에서 저장된 이미지 경로 확인
-    const savedImage = localStorage.getItem("profileImage");
-    if (savedImage) {
-      setProfileImage(savedImage);
-    } else {
-      // 기본 이미지 사용
-      setProfileImage(defaultProfileImage);
-    }
-  }, []);
+  const profileImage = `${import.meta.env.BASE_URL}images/profile/profile.jpg`;
 
   return (
     <section className="hero">

@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import ScrollToTop from "./components/common/ScrollToTop";
+import CustomCursor from "./components/common/CustomCursor";
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -13,6 +14,7 @@ import About from "./pages/About";
 const App: React.FC = () => {
   return (
     <div className="app-root">
+      <CustomCursor />
       <ScrollToTop />
       <Layout>
         <Routes>

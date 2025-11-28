@@ -8,13 +8,13 @@ const About: React.FC = () => {
       <SectionTitle
         label="About"
         title="자기 소개"
-        description="세계관·픽셀·감성 인터랙션을 통해 작은 감정의 공간을 만드는 웹 크리에이터입니다."
+        description="세계관·픽셀·감성 인터랙션을 통해 작은 감정의 공간을 만드는 프론트엔드 웹 디자이너입니다."
       />
       <GlassCard className="about-card">
         <div className="about-content">
           <div className="about-intro">
             <p className="about-intro-main">
-              감성을 코드로 번역하는 웹 크리에이터, 정지원입니다.
+              감성을 코드로 번역하는 프론트엔드 웹 디자이너, 정지원입니다.
             </p>
             <p>
               저는 제가 만든 세계관과 캐릭터들을 웹 속에서 살아 움직이게 만드는 일을 해요.

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../components/common/SectionTitle";
 import GlassCard from "../components/common/GlassCard";
+import AdminPasswordModal from "../components/modals/AdminPasswordModal";
 import { initialGuestbook } from "../data/guestbook";
 
 const AVATARS = ["😊", "🎨", "✨", "💫", "🌸", "🦋", "🌙", "⭐"];
@@ -22,6 +23,8 @@ const Guestbook: React.FC = () => {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState(AVATARS[0]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
 
   useEffect(() => {
     localStorage.setItem("guestbookMessages", JSON.stringify(messages));
@@ -61,6 +64,19 @@ const Guestbook: React.FC = () => {
     setName("");
   };
 
+  const handleDeleteClick = (id: string) => {
+    setDeleteTargetId(id);
+    setIsModalOpen(true);
+  };
+
+  const handleDeleteSuccess = () => {
+    if (deleteTargetId) {
+      setMessages((prev) => prev.filter((msg) => msg.id !== deleteTargetId));
+      setDeleteTargetId(null);
+    }
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="section">
       <SectionTitle
@@ -96,10 +112,29 @@ const Guestbook: React.FC = () => {
                 </motion.div>
                 <div className="guestbook-bubble-content">
                   <div className="guestbook-bubble-header">
-                    <p className="guestbook-name">{m.name}</p>
-                    {m.date && (
-                      <span className="guestbook-date">{formatDate(m.date)}</span>
-                    )}
+                    <div className="guestbook-bubble-header-left">
+                      <p className="guestbook-name">{m.name}</p>
+                      {m.date && (
+                        <span className="guestbook-date">{formatDate(m.date)}</span>
+                      )}
+                    </div>
+                    <motion.button
+                      className="guestbook-delete-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteClick(m.id);
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      title="삭제 (관리자)"
+                      aria-label="삭제"
+                    >
+                      <span className="guestbook-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </motion.button>
                   </div>
                   <p className="guestbook-text">{m.message}</p>
                 </div>
@@ -161,6 +196,14 @@ const Guestbook: React.FC = () => {
           </div>
         </div>
       </GlassCard>
+      <AdminPasswordModal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setDeleteTargetId(null);
+        }}
+        onSuccess={handleDeleteSuccess}
+      />
     </section>
   );
 };
