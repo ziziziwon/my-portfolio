@@ -12,8 +12,11 @@
 /* ============================================
    ⭐ 커스텀 커서 - 파란색 별 모양
    ============================================ */
-* {
-  cursor: none !important;
+/* 데스크톱에서만 커서 숨김 (모바일/태블릿에서는 터치 이벤트 사용) */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 /* 커스텀 커서 별 요소 */
@@ -61,18 +64,20 @@
   }
 }
 
-/* 링크, 버튼 등에 호버 효과 */
-a,
-button,
-.btn,
-.hero-btn,
-.jelly-btn,
-input[type="button"],
-input[type="submit"],
-[role="button"],
-.swiper-button-next,
-.swiper-button-prev {
-  cursor: none !important;
+/* 링크, 버튼 등에 호버 효과 (데스크톱에서만) */
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  .btn,
+  .hero-btn,
+  .jelly-btn,
+  input[type="button"],
+  input[type="submit"],
+  [role="button"],
+  .swiper-button-next,
+  .swiper-button-prev {
+    cursor: none !important;
+  }
 }
 
 @font-face {
