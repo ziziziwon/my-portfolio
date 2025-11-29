@@ -20,19 +20,35 @@
 
 ### 3. 파일 내용
 
+**최신 버전 (권장):**
+
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
   
-  # /myportfolio/로 시작하는 경로는 그대로 유지
-  RewriteCond %{REQUEST_URI} ^/myportfolio/
-  RewriteRule ^ - [L]
+  # /devlog로 시작하는 모든 경로를 /myportfolio/devlog로 리다이렉트
+  RewriteCond %{REQUEST_URI} ^/devlog
+  RewriteRule ^devlog(/.*)?$ /myportfolio/devlog$1 [R=301,L]
   
-  # 실제 파일이나 디렉토리가 존재하면 리다이렉트하지 않음
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
+  # /portfolio로 시작하는 모든 경로를 /myportfolio/portfolio로 리다이렉트
+  RewriteCond %{REQUEST_URI} ^/portfolio
+  RewriteRule ^portfolio(/.*)?$ /myportfolio/portfolio$1 [R=301,L]
+  
+  # /guestbook으로 시작하는 모든 경로를 /myportfolio/guestbook로 리다이렉트
+  RewriteCond %{REQUEST_URI} ^/guestbook
+  RewriteRule ^guestbook(/.*)?$ /myportfolio/guestbook$1 [R=301,L]
+  
+  # /about으로 시작하는 모든 경로를 /myportfolio/about로 리다이렉트
+  RewriteCond %{REQUEST_URI} ^/about
+  RewriteRule ^about(/.*)?$ /myportfolio/about$1 [R=301,L]
+</IfModule>
+```
+
+**간단 버전:**
+
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
   
   # /devlog로 시작하는 모든 경로를 /myportfolio/devlog로 리다이렉트
   RewriteRule ^devlog(/.*)?$ /myportfolio/devlog$1 [R=301,L]
