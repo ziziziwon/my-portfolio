@@ -6,7 +6,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   
-  # 그 외의 모든 요청을 index.html로 리다이렉트
-  RewriteRule . /myportfolio/index.html [L]
+  # 그 외의 모든 요청을 index.html로 리다이렉트 (상대 경로 사용)
+  RewriteRule ^ index.html [L]
 </IfModule>
 
