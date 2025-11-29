@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionTitle from "../components/common/SectionTitle";
 import GlassCard from "../components/common/GlassCard";
 import AdminPasswordModal from "../components/modals/AdminPasswordModal";
@@ -6,6 +7,7 @@ import { getDevLogs, type DevLogItem } from "../services/devlogService";
 import { devlogs as defaultDevlogs } from "../data/devlog";
 
 const DevLog: React.FC = () => {
+  const navigate = useNavigate();
   const [logs, setLogs] = useState<DevLogItem[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -42,7 +44,7 @@ const DevLog: React.FC = () => {
   };
 
   const handleAuthSuccess = () => {
-    window.location.href = "/devlog/write";
+    navigate("/devlog/write");
   };
 
   const toggleExpand = (id: string) => {

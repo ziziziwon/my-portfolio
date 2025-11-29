@@ -9,11 +9,7 @@ import "./styles.css";
 // basename을 동적으로 감지하여 두 가지 경로 모두 지원
 // /myportfolio/로 시작하면 /myportfolio, 그렇지 않으면 빈 문자열
 const getBasename = () => {
-  if (import.meta.env.DEV) {
-    return '';
-  }
-  
-  // 프로덕션 환경에서 현재 경로를 확인
+  // 개발/프로덕션 환경 모두에서 현재 경로를 확인
   const pathname = window.location.pathname;
   if (pathname.startsWith('/myportfolio')) {
     return '/myportfolio';

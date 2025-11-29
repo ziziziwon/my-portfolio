@@ -27,7 +27,7 @@ const DevLogWrite: React.FC = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       const result = reader.result as string;
-      
+
       // Base64 인코딩된 이미지 크기 체크 (약 1MB 제한)
       // Base64는 원본보다 약 33% 크므로, 원본 1MB = Base64 약 1.33MB
       const base64Size = result.length * 0.75; // Base64 크기 추정
@@ -35,7 +35,7 @@ const DevLogWrite: React.FC = () => {
         setError("이미지가 너무 큽니다. 더 작은 이미지를 사용해주세요.");
         return;
       }
-      
+
       // 이미지 압축 시도
       compressImage(result, maxSize);
     };
@@ -65,12 +65,12 @@ const DevLogWrite: React.FC = () => {
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext("2d");
-      
+
       if (ctx) {
         ctx.drawImage(img, 0, 0, width, height);
         // JPEG 품질 조정 (0.7 = 70% 품질)
         const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.7);
-        
+
         // 압축 후 크기 체크
         const compressedSize = compressedDataUrl.length * 0.75;
         if (compressedSize > maxSize) {
@@ -101,18 +101,7 @@ const DevLogWrite: React.FC = () => {
       navigate("/devlog");
     } catch (err: any) {
       console.error("DevLog 저장 실패:", err);
-      let errorMessage = "작업 로그 저장에 실패했습니다. 잠시 후 다시 시도해주세요.";
-      
-      // Firebase 에러 메시지 상세화
-      if (err?.code === "permission-denied") {
-        errorMessage = "권한이 없습니다. Firestore 보안 규칙을 확인해주세요.";
-      } else if (err?.code === "unavailable") {
-        errorMessage = "Firebase 서비스에 연결할 수 없습니다. 네트워크를 확인해주세요.";
-      } else if (err?.message) {
-        errorMessage = `저장 실패: ${err.message}`;
-      }
-      
-      setError(errorMessage);
+      setError(err.message || "작업 로그 저장에 실패했습니다. 잠시 후 다시 시도해주세요.");
     } finally {
       setSaving(false);
     }

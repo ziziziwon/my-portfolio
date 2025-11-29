@@ -26,17 +26,6 @@ npm run build
 - DevLog: `https://jjw0144.mycafe24.com/myportfolio/devlog`
 - DevLog 작성: `https://jjw0144.mycafe24.com/myportfolio/devlog/write`
 
-**잘못된 URL (404 에러 발생):**
-- `https://jjw0144.mycafe24.com/devlog/write` ❌
-
-### 3-1. 루트 디렉토리 리다이렉트 설정 (필수)
-
-`/devlog/write` 같은 경로로 접근했을 때 자동으로 `/myportfolio/devlog/write`로 리다이렉트하려면:
-
-1. `public/.htaccess.root` 파일을 카페24 서버의 루트 디렉토리(`/www/`)에 `.htaccess`로 업로드
-2. 이렇게 하면 `/devlog`, `/portfolio`, `/guestbook`, `/about` 경로가 자동으로 `/myportfolio/`로 리다이렉트됩니다.
-3. **중요**: 루트 디렉토리(`/www/`)에 `.htaccess` 파일이 이미 있다면, 기존 내용과 병합하거나 새로 작성해야 합니다.
-
 ### 4. .htaccess 파일 확인
 
 `.htaccess` 파일이 `dist/` 폴더에 포함되어 있는지 확인하세요. 이 파일이 없으면 React Router의 클라이언트 사이드 라우팅이 작동하지 않습니다.

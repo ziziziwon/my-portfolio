@@ -2,18 +2,8 @@
 // basename을 동적으로 감지하여 이미지 경로 처리
 
 export const getBasePath = (): string => {
-  if (import.meta.env.DEV) {
-    return import.meta.env.BASE_URL;
-  }
-  
-  // 프로덕션 환경에서 현재 경로를 확인
-  const pathname = window.location.pathname;
-  if (pathname.startsWith('/myportfolio')) {
-    return '/myportfolio/';
-  }
-  
-  // /myportfolio가 없으면 루트 경로
-  return '/';
+  // Vite의 BASE_URL 사용 (개발/프로덕션 모두 /myportfolio/)
+  return import.meta.env.BASE_URL;
 };
 
 export const getImagePath = (imagePath: string): string => {
