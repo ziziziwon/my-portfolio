@@ -2,13 +2,27 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>리다이렉트 중...</title>
   <meta http-equiv="refresh" content="0; url=/myportfolio/devlog/write">
   <script>
-    window.location.href = '/myportfolio/devlog/write';
+    // 즉시 리다이렉트
+    (function() {
+      var target = '/myportfolio/devlog/write';
+      // 현재 경로 확인
+      if (window.location.pathname !== target) {
+        window.location.replace(target);
+      }
+    })();
   </script>
 </head>
 <body>
   <p>리다이렉트 중... <a href="/myportfolio/devlog/write">여기를 클릭하세요</a></p>
+  <script>
+    // 추가 리다이렉트 (혹시 모를 경우 대비)
+    setTimeout(function() {
+      window.location.href = '/myportfolio/devlog/write';
+    }, 100);
+  </script>
 </body>
 </html>
 
