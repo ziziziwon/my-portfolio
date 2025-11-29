@@ -6,8 +6,28 @@ import { ThemeProvider } from "./theme/ThemeProvider";
 import "./index.css";
 import "./styles.css";
 
-// 개발 환경에서는 basename 없음, 프로덕션에서는 /myportfolio
-const basename = import.meta.env.PROD ? '/myportfolio' : '';
+// basename을 동적으로 감지하여 두 가지 경로 모두 지원
+// /myportfolio/로 시작하면 /myportfolio, 그렇지 않으면 빈 문자열
+const getBasename = () => {
+  if (import.meta.env.DEV) {
+    return '';
+  }
+  
+  // 프로덕션 환경에서 현재 경로를 확인
+  const pathname = window.location.pathname;
+  if (pathname.startsWith('/myportfolio')) {
+    return '/myportfolio';
+  }
+  
+  // /myportfolio가 없으면 빈 문자열 (루트에서 작동)
+  // 이 경우 이미지 경로도 루트 기준으로 처리
+  return '';
+};
+
+const basename = getBasename();
+
+// 전역 변수로 basename 저장 (이미지 경로 처리용)
+(window as any).__BASENAME__ = basename;
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

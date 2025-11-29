@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getImagePath } from "../../utils/pathUtils";
 
 const HeroProfile: React.FC = () => {
   // 프로필 이미지 경로 - public/images/profile/ 폴더에 저장
-  const profileImage = `${import.meta.env.BASE_URL}images/profile/profile.jpg`;
+  const profileImage = getImagePath("images/profile/profile.jpg");
 
   return (
     <section className="hero">

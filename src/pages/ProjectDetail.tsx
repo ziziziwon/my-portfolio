@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import SectionTitle from "../components/common/SectionTitle";
 import GlassCard from "../components/common/GlassCard";
 import { projects } from "../data/projects";
+import { getImagePath } from "../utils/pathUtils";
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,10 +55,8 @@ const ProjectDetail: React.FC = () => {
               speed={600}
             >
               {project.images.map((image, index) => {
-                // 서브 경로 배포를 위한 이미지 경로 처리
-                const imagePath = image.startsWith('/') 
-                  ? `${import.meta.env.BASE_URL}${image.slice(1)}` 
-                  : `${import.meta.env.BASE_URL}${image}`;
+                // 동적 경로 처리 (basename 자동 감지)
+                const imagePath = getImagePath(image);
                 return (
                   <SwiperSlide key={`${project.id}-${index}`}>
                     <div className="project-swiper-slide">
