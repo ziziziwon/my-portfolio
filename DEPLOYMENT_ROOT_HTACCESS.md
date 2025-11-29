@@ -23,6 +23,7 @@
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
   
   # /myportfolio/로 시작하는 경로는 그대로 유지
   RewriteCond %{REQUEST_URI} ^/myportfolio/
@@ -33,8 +34,17 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
   
-  # /devlog, /portfolio, /guestbook, /about 등으로 시작하는 경로를 /myportfolio/로 리다이렉트
-  RewriteRule ^(devlog|portfolio|guestbook|about)(/.*)?$ /myportfolio/$1$2 [R=301,L]
+  # /devlog로 시작하는 모든 경로를 /myportfolio/devlog로 리다이렉트
+  RewriteRule ^devlog(/.*)?$ /myportfolio/devlog$1 [R=301,L]
+  
+  # /portfolio로 시작하는 모든 경로를 /myportfolio/portfolio로 리다이렉트
+  RewriteRule ^portfolio(/.*)?$ /myportfolio/portfolio$1 [R=301,L]
+  
+  # /guestbook으로 시작하는 모든 경로를 /myportfolio/guestbook로 리다이렉트
+  RewriteRule ^guestbook(/.*)?$ /myportfolio/guestbook$1 [R=301,L]
+  
+  # /about으로 시작하는 모든 경로를 /myportfolio/about로 리다이렉트
+  RewriteRule ^about(/.*)?$ /myportfolio/about$1 [R=301,L]
 </IfModule>
 ```
 

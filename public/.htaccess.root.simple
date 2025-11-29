@@ -1,18 +1,8 @@
-# 카페24 서버 루트 디렉토리(/www/)에 배치할 .htaccess
+# 카페24 서버 루트 디렉토리(/www/)에 배치할 .htaccess (간단 버전)
 # /devlog/write 같은 경로를 /myportfolio/devlog/write로 리다이렉트
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
-  
-  # /myportfolio/로 시작하는 경로는 그대로 유지
-  RewriteCond %{REQUEST_URI} ^/myportfolio/
-  RewriteRule ^ - [L]
-  
-  # 실제 파일이나 디렉토리가 존재하면 리다이렉트하지 않음
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
   
   # /devlog로 시작하는 모든 경로를 /myportfolio/devlog로 리다이렉트
   RewriteRule ^devlog(/.*)?$ /myportfolio/devlog$1 [R=301,L]
