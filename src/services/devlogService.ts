@@ -86,6 +86,11 @@ export const addDevLog = async (
   image?: string | null
 ): Promise<string> => {
   try {
+    // Firebase 초기화 확인
+    if (!db) {
+      throw new Error("Firebase가 초기화되지 않았습니다. 환경 변수를 확인해주세요.");
+    }
+    
     const newLog = {
       title: title.trim(),
       content: content.trim(),
@@ -94,10 +99,16 @@ export const addDevLog = async (
       createdAt: Timestamp.now(),
     };
     
+    // 데이터 유효성 검사
+    if (!newLog.title || !newLog.content) {
+      throw new Error("제목과 내용은 필수입니다.");
+    }
+    
     const docRef = await addDoc(devlogCollection, newLog);
     return docRef.id;
-  } catch (error) {
+  } catch (error: any) {
     console.error("DevLog 추가 실패:", error);
+    // 에러 정보를 더 자세히 전달
     throw error;
   }
 };
