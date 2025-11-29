@@ -12,8 +12,8 @@ Jiwon's Interactive Universe
 - 📱 **반응형 디자인**: 모바일, 태블릿, 데스크톱 최적화
 - 🌓 **다크 모드**: 라이트/다크 모드 전환 지원 (localStorage 저장, 시스템 다크모드 감지, 모바일 최적화)
 - 🎭 **프로젝트 포트폴리오**: Swiper를 활용한 멀티 이미지 갤러리
-- 📝 **DevLog**: 개발 일지 작성 및 관리
-- 💬 **방명록**: 방문자 메시지 기능 (관리자 삭제 기능 포함)
+- 📝 **DevLog**: 개발 일지 작성 및 관리 (Firebase Firestore 연동)
+- 💬 **방명록**: 방문자 메시지 기능 (Firebase Firestore 연동, 관리자 삭제 기능 포함)
 - 👤 **About**: 자기소개 및 스킬 소개
 
 ## 🚀 기술 스택
@@ -24,6 +24,7 @@ Jiwon's Interactive Universe
 - **Routing**: React Router DOM v7
 - **Build Tool**: Vite 7
 - **Image Slider**: Swiper 12
+- **Database**: Firebase Firestore
 - **State Management**: React Hooks (useState, useEffect)
 
 ## 📦 설치 및 실행
@@ -94,18 +95,34 @@ my-portfolio/
 
 ### 💬 방명록
 - 방문자 메시지 작성 및 조회
+- Firebase Firestore를 통한 실시간 데이터 동기화
 - 이름, 날짜 표시
 - 관리자 비밀번호 기반 삭제 기능
 - 부드러운 애니메이션 효과
+- 다른 기기에서도 데이터 확인 가능
+
+### 📝 DevLog (작업 로그)
+- 개발 일지 작성 및 관리
+- Firebase Firestore를 통한 데이터 저장
+- 이미지 업로드 지원
+- 관리자 인증 기반 작성
+- 타임라인 형태의 시각적 표시
 
 ## 🌐 배포
 
 이 프로젝트는 `/myportfolio/` 서브 경로에서 배포되도록 설정되어 있습니다.
 
 ### 배포 설정
-- `vite.config.ts`에서 `base: '/myportfolio/'` 설정
+- 개발 환경: `base: '/'` (로컬 개발)
+- 프로덕션 환경: `base: '/myportfolio/'` (배포)
+- `vite.config.ts`에서 환경에 따라 자동 설정
 - `package.json`에서 `homepage: "/myportfolio"` 설정
-- `main.tsx`에서 `BrowserRouter basename="/myportfolio"` 설정
+- `main.tsx`에서 환경에 따라 `basename` 자동 설정
+
+### Firebase 설정
+- Firebase Firestore를 사용하여 방명록과 DevLog 데이터 저장
+- `.env` 파일에 Firebase 설정 정보 필요
+- 자세한 설정 방법은 `FIREBASE_SETUP.md` 참고
 
 ### 빌드 및 배포
 ```bash

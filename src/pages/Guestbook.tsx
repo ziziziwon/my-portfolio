@@ -3,32 +3,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../components/common/SectionTitle";
 import GlassCard from "../components/common/GlassCard";
 import AdminPasswordModal from "../components/modals/AdminPasswordModal";
-import { initialGuestbook } from "../data/guestbook";
+import {
+  getGuestbookMessages,
+  addGuestbookMessage,
+  deleteGuestbookMessage,
+  type GuestbookItem,
+} from "../services/guestbookService";
 
 const AVATARS = ["😊", "🎨", "✨", "💫", "🌸", "🦋", "🌙", "⭐"];
 
-interface GuestbookItem {
-  id: string;
-  name: string;
-  message: string;
-  avatar: string;
-  date?: string;
-}
-
 const Guestbook: React.FC = () => {
-  const [messages, setMessages] = useState<GuestbookItem[]>(() => {
-    const saved = localStorage.getItem("guestbookMessages");
-    return saved ? JSON.parse(saved) : initialGuestbook;
-  });
+  const [messages, setMessages] = useState<GuestbookItem[]>([]);
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState(AVATARS[0]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
 
+  // Firebase에서 방명록 메시지 불러오기
   useEffect(() => {
-    localStorage.setItem("guestbookMessages", JSON.stringify(messages));
-  }, [messages]);
+    const loadMessages = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const fetchedMessages = await getGuestbookMessages();
+        setMessages(fetchedMessages);
+      } catch (err) {
+        console.error("방명록 로드 실패:", err);
+        setError("방명록을 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMessages();
+  }, []);
 
   const formatDate = (dateString?: string) => {
     if (!dateString) return "";
@@ -50,18 +62,35 @@ const Guestbook: React.FC = () => {
     }
   };
 
-  const handleSend = () => {
-    if (!text.trim()) return;
-    const newMessage: GuestbookItem = {
-      id: `${Date.now()}`,
-      name: name.trim() || "익명",
-      message: text.trim(),
-      avatar: selectedAvatar,
-      date: new Date().toISOString().split("T")[0],
-    };
-    setMessages((prev) => [...prev, newMessage]);
-    setText("");
-    setName("");
+  const handleSend = async () => {
+    if (!text.trim() || sending) return;
+
+    try {
+      setSending(true);
+      setError(null);
+      const messageId = await addGuestbookMessage(
+        name,
+        text,
+        selectedAvatar
+      );
+      
+      // 새 메시지를 목록에 추가 (최신순으로 정렬되므로 맨 앞에 추가)
+      const newMessage: GuestbookItem = {
+        id: messageId,
+        name: name.trim() || "익명",
+        message: text.trim(),
+        avatar: selectedAvatar,
+        date: new Date().toISOString().split("T")[0],
+      };
+      setMessages((prev) => [newMessage, ...prev]);
+      setText("");
+      setName("");
+    } catch (err) {
+      console.error("메시지 전송 실패:", err);
+      setError("메시지 전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleDeleteClick = (id: string) => {
@@ -69,12 +98,23 @@ const Guestbook: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleDeleteSuccess = () => {
-    if (deleteTargetId) {
+  const handleDeleteSuccess = async () => {
+    if (!deleteTargetId) {
+      setIsModalOpen(false);
+      return;
+    }
+
+    try {
+      setError(null);
+      await deleteGuestbookMessage(deleteTargetId);
       setMessages((prev) => prev.filter((msg) => msg.id !== deleteTargetId));
       setDeleteTargetId(null);
+    } catch (err) {
+      console.error("메시지 삭제 실패:", err);
+      setError("메시지 삭제에 실패했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setIsModalOpen(false);
     }
-    setIsModalOpen(false);
   };
 
   return (
@@ -90,9 +130,32 @@ const Guestbook: React.FC = () => {
             총 <strong>{messages.length}</strong>개의 메시지
           </div>
         </div>
-        <div className="guestbook-messages">
+        {error && (
+          <div style={{
+            padding: "12px",
+            margin: "16px",
+            background: "rgba(255, 0, 0, 0.1)",
+            border: "1px solid rgba(255, 0, 0, 0.3)",
+            borderRadius: "8px",
+            color: "var(--text-main)",
+            fontSize: "14px",
+            textAlign: "center",
+          }}>
+            {error}
+          </div>
+        )}
+        {loading ? (
+          <div style={{
+            padding: "40px",
+            textAlign: "center",
+            color: "var(--text-sub)",
+          }}>
+            방명록을 불러오는 중...
+          </div>
+        ) : (
+          <div className="guestbook-messages">
           <AnimatePresence mode="popLayout">
-            {messages.slice().reverse().map((m) => (
+            {messages.map((m) => (
               <motion.div
                 key={m.id}
                 className="guestbook-bubble"
@@ -141,7 +204,8 @@ const Guestbook: React.FC = () => {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
+          </div>
+        )}
         <div className="guestbook-form">
           <div className="guestbook-form-row">
             <input
@@ -184,11 +248,11 @@ const Guestbook: React.FC = () => {
             <motion.button
               className="guestbook-send"
               onClick={handleSend}
-              disabled={!text.trim()}
+              disabled={!text.trim() || sending}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              SEND
+              {sending ? "전송 중..." : "SEND"}
             </motion.button>
           </div>
           <div className="guestbook-input-hint">

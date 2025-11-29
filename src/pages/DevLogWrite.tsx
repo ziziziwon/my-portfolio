@@ -2,12 +2,15 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import GlassCard from "../components/common/GlassCard";
 import SectionTitle from "../components/common/SectionTitle";
+import { addDevLog } from "../services/devlogService";
 
 const DevLogWrite: React.FC = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,25 +24,22 @@ const DevLogWrite: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !content) return;
+    if (!title || !content || saving) return;
 
-    const newLog = {
-      id: Date.now().toString(),
-      date: new Date().toISOString().split("T")[0],
-      title,
-      content,
-      image,
-    };
-
-    const existingLogs = JSON.parse(
-      localStorage.getItem("devlogs") || "[]"
-    );
-    existingLogs.unshift(newLog);
-    localStorage.setItem("devlogs", JSON.stringify(existingLogs));
-
-    navigate("/devlog");
+    try {
+      setSaving(true);
+      setError(null);
+      const date = new Date().toISOString().split("T")[0];
+      await addDevLog(title, content, date, image);
+      navigate("/devlog");
+    } catch (err) {
+      console.error("DevLog 저장 실패:", err);
+      setError("작업 로그 저장에 실패했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -50,6 +50,20 @@ const DevLogWrite: React.FC = () => {
         description="작업 로그를 작성해 주세요."
       />
       <GlassCard className="devlog-write-card">
+        {error && (
+          <div style={{
+            padding: "12px",
+            margin: "16px 0",
+            background: "rgba(255, 0, 0, 0.1)",
+            border: "1px solid rgba(255, 0, 0, 0.3)",
+            borderRadius: "8px",
+            color: "var(--text-main)",
+            fontSize: "14px",
+            textAlign: "center",
+          }}>
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>제목</label>
@@ -103,8 +117,8 @@ const DevLogWrite: React.FC = () => {
             />
           </div>
           <div className="form-actions">
-            <button type="submit" className="form-submit-btn">
-              작성 완료
+            <button type="submit" className="form-submit-btn" disabled={saving}>
+              {saving ? "저장 중..." : "작성 완료"}
             </button>
             <button
               type="button"

@@ -22,7 +22,9 @@ const CustomCursor = () => {
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+      const target = e.target;
+      if (!target || !(target instanceof Element)) return;
+      
       if (
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
@@ -39,7 +41,9 @@ const CustomCursor = () => {
     };
 
     const handleMouseLeave = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+      const target = e.target;
+      if (!target || !(target instanceof Element)) return;
+      
       if (
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||

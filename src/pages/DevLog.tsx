@@ -2,27 +2,39 @@ import React, { useState, useEffect } from "react";
 import SectionTitle from "../components/common/SectionTitle";
 import GlassCard from "../components/common/GlassCard";
 import AdminPasswordModal from "../components/modals/AdminPasswordModal";
+import { getDevLogs, type DevLogItem } from "../services/devlogService";
 import { devlogs as defaultDevlogs } from "../data/devlog";
 
-interface DevLogItem {
-  id: string;
-  date: string;
-  title: string;
-  content: string;
-  image?: string | null;
-}
-
 const DevLog: React.FC = () => {
-  const [logs, setLogs] = useState<DevLogItem[]>(defaultDevlogs);
+  const [logs, setLogs] = useState<DevLogItem[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // Firebase에서 DevLog 불러오기
   useEffect(() => {
-    const savedLogs = localStorage.getItem("devlogs");
-    if (savedLogs) {
-      const parsed = JSON.parse(savedLogs);
-      setLogs([...parsed, ...defaultDevlogs]);
-    }
+    const loadLogs = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const fetchedLogs = await getDevLogs();
+        // Firebase에서 가져온 로그와 기본 로그를 합치기 (중복 제거)
+        const allLogs = [...fetchedLogs];
+        const defaultIds = new Set(fetchedLogs.map(log => log.id));
+        const uniqueDefaults = defaultDevlogs.filter(log => !defaultIds.has(log.id));
+        setLogs([...allLogs, ...uniqueDefaults]);
+      } catch (err) {
+        console.error("DevLog 로드 실패:", err);
+        setError("작업 로그를 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.");
+        // 에러 발생 시 기본 로그만 표시
+        setLogs(defaultDevlogs);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadLogs();
   }, []);
 
   const handleNewClick = () => {
@@ -49,8 +61,31 @@ const DevLog: React.FC = () => {
           New
         </button>
       </div>
-      <div className="devlog-timeline">
-        {logs.map((log, index) => (
+      {error && (
+        <div style={{
+          padding: "12px",
+          margin: "16px",
+          background: "rgba(255, 0, 0, 0.1)",
+          border: "1px solid rgba(255, 0, 0, 0.3)",
+          borderRadius: "8px",
+          color: "var(--text-main)",
+          fontSize: "14px",
+          textAlign: "center",
+        }}>
+          {error}
+        </div>
+      )}
+      {loading ? (
+        <div style={{
+          padding: "40px",
+          textAlign: "center",
+          color: "var(--text-sub)",
+        }}>
+          작업 로그를 불러오는 중...
+        </div>
+      ) : (
+        <div className="devlog-timeline">
+          {logs.map((log, index) => (
           <div key={log.id} className="devlog-item">
             <div className="timeline-marker">
               <div className="timeline-line" />
@@ -80,7 +115,8 @@ const DevLog: React.FC = () => {
             </GlassCard>
           </div>
         ))}
-      </div>
+        </div>
+      )}
       <AdminPasswordModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

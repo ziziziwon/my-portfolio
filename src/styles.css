@@ -481,7 +481,6 @@ button,
 :root[data-theme="dark"] .hero-btn.ghost,
 :root[data-theme="dark"] .highlight-btn.ghost,
 :root[data-theme="dark"] .form-cancel-btn,
-:root[data-theme="dark"] .modal-btn.ghost,
 :root[data-theme="dark"] .btn.ghost {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-main);
@@ -595,9 +594,12 @@ button,
 :root[data-theme="dark"] .quote-edit-input,
 :root[data-theme="dark"] .highlight-edit-input,
 :root[data-theme="dark"] .modal-input {
-  background: rgba(20, 23, 32, 0.8);
+  background: rgba(20, 23, 32, 0.9);
   color: var(--text-main);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 :root[data-theme="dark"] .music-input:focus,
@@ -2876,6 +2878,94 @@ a {
   background: white;
   border-color: var(--galaxy-lavender);
   box-shadow: var(--shadow-neu-embossed);
+}
+
+/* Modal Dark Mode */
+:root[data-theme="dark"] .modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+:root[data-theme="dark"] .modal-content {
+  background: rgba(25, 28, 38, 0.95);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .modal-title {
+  color: var(--text-main);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .modal-input {
+  background: rgba(20, 23, 32, 0.9);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .modal-input::placeholder {
+  color: var(--text-gray);
+  opacity: 0.5;
+}
+
+:root[data-theme="dark"] .modal-input:focus {
+  background: rgba(30, 33, 42, 0.95);
+  border-color: var(--galaxy-lavender);
+  box-shadow: 
+    0 0 0 3px rgba(200, 168, 233, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .modal-error {
+  color: var(--point-pink);
+  text-shadow: 0 1px 4px rgba(255, 157, 212, 0.4);
+}
+
+:root[data-theme="dark"] .modal-btn.primary {
+  background: linear-gradient(135deg, var(--galaxy-purple), var(--galaxy-pink));
+  color: white;
+  box-shadow: 
+    0 8px 24px rgba(155, 126, 222, 0.5),
+    0 4px 12px rgba(200, 168, 233, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .modal-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 32px rgba(155, 126, 222, 0.6),
+    0 6px 16px rgba(200, 168, 233, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme="dark"] .modal-btn.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .modal-btn.ghost:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--galaxy-lavender);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* DevLog Write */
