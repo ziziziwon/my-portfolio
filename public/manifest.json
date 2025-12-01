@@ -1,0 +1,19 @@
+{
+  "name": "Jiwon's Portfolio",
+  "short_name": "Jiwon",
+  "description": "Jiwon's Web Developer Portfolio",
+  "start_url": "/myportfolio/",
+  "scope": "/myportfolio/",
+  "display": "standalone",
+  "theme_color": "#9B7EDE",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/myportfolio/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
