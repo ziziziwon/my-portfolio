@@ -19,6 +19,12 @@ const About: React.FC = () => {
             <p>
               저는 제가 만든 세계관과 캐릭터들을 웹 속에서 살아 움직이게 만드는 일을 해요.
             </p>
+            <p>
+              프론트엔드부터 시작해 백엔드, 데이터베이스, 배포까지 경험하며
+              <strong> 풀스택 개발자로 거의 완성</strong>되어 가고 있습니다.
+              Firebase, Render 등 다양한 클라우드 서비스를 활용한
+              실전 프로젝트 경험을 쌓아가고 있어요.
+            </p>
           </div>
 
           <div className="about-story">
@@ -103,6 +109,7 @@ const About: React.FC = () => {
               <span className="skill-icon" title="Framer Motion">✨ Framer Motion</span>
               <span className="skill-icon" title="Zustand">🔄 Zustand</span>
               <span className="skill-icon" title="Firebase">🔥 Firebase</span>
+              <span className="skill-icon" title="Render">🚀 Render</span>
               <span className="skill-icon" title="Figma">🎨 Figma</span><br />
               <span className="skill-icon" title="Illustrator">✏️ Illustrator</span>
               <span className="skill-icon" title="Photoshop">🖼️ Photoshop</span>
