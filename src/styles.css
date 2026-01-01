@@ -2487,6 +2487,8 @@ a {
   padding: var(--space-3xl);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: var(--shadow-neu-embossed);
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .about-content {
@@ -2520,6 +2522,8 @@ a {
   margin: 0 0 var(--space-md);
   color: var(--text-main);
   font-family: "Cafe24SsurroundAir", "Pretendard", sans-serif;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
 }
 
 .about-card p:last-child {
@@ -2533,6 +2537,7 @@ a {
   color: var(--text-dark);
   margin: 0 0 var(--space-md);
   letter-spacing: -0.02em;
+  word-break: keep-all;
 }
 
 .about-story,
@@ -2550,6 +2555,8 @@ a {
   box-shadow: 
     0 4px 16px rgba(155, 126, 222, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  line-height: 1.75;
+  border-left: 4px solid rgba(155, 126, 222, 0.35);
 }
 
 .about-card strong {
